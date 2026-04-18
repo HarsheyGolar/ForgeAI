@@ -109,7 +109,7 @@ import os
 #                 f.write(response.content)
             
 #             # Return local URL jo frontend access kar sake
-#             return f"http://localhost:8000/images/{filename}"
+#             return f"https://forgeai-em4m.onrender.com/images/{filename}"
 #         else:
 #             return None
             

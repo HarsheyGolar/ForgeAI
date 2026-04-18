@@ -49,23 +49,6 @@
 //         }
 //     } catch (e: any) {
 //         alert("Invalid email or password")
-//         setIsLoading(false)
-//     }
-// }
-//   const handleGoogleSignIn = async () => {
-//     setIsLoading(true)
-//     try {
-//       const res = await fetch("http://localhost:8000/auth/google")
-//       const data = await res.json()
-//       if (data.url) {
-//         // Before redirecting, make sure redirect_to in URL points to callback
-//         const urlObj = new URL(data.url)
-//         urlObj.searchParams.set("redirect_to", "http://localhost:3000/auth/callback")
-//         window.location.href = urlObj.toString()
-//       } else {
-//         setIsLoading(false)
-//       }
-//     } catch (e: any) {
 //       alert("Failed to get Google auth URL")
 //       setIsLoading(false)
 //     }
@@ -267,29 +250,29 @@ export default function SignInPage() {
   const handleGoogleSignIn = async () => {
     setIsLoading(true)
     try {
-        const { createClient } = await import("@supabase/supabase-js")
-        const supabase = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-        )
-        
-        const { data, error } = await supabase.auth.signInWithOAuth({
-            provider: "google",
-            options: {
-                redirectTo: "http://localhost:3000/auth/callback"
-            }
-        })
-        
-        if (error) {
-            alert("Google login failed!")
-            setIsLoading(false)
+      const { createClient } = await import("@supabase/supabase-js")
+      const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      )
+
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: "https://forge-ai-kohl.vercel.app/auth/callback"
         }
-        // Supabase automatically redirect karega
-    } catch (e) {
-        alert("Failed!")
+      })
+
+      if (error) {
+        alert("Google login failed!")
         setIsLoading(false)
+      }
+      // Supabase automatically redirect karega
+    } catch (e) {
+      alert("Failed!")
+      setIsLoading(false)
     }
-}
+  }
 
   // NOTE: The rest of your UI JSX code remains EXACTLY the same here.
   // ... (Paste your exact existing return JSX here)

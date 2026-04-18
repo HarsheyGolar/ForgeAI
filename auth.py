@@ -109,7 +109,7 @@ async def google_login():
     response = supabase.auth.sign_in_with_oauth({
         "provider" : "google",
         "options" : {
-            "redirect_to" : "http://localhost:3000"
+            "redirect_to" : "https://forge-ai-kohl.vercel.app"
         }
     })
     return {

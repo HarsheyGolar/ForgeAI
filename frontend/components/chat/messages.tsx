@@ -247,7 +247,7 @@ function AssistantMessage({ content }: { content: string }) {
   // const isImageUrl = content?.includes("https://image.pollinations.ai")
   // const imageUrl = content?.match(/https:\/\/image\.pollinations\.ai[^\s]*/)?.[0]
   const isImageUrl = content?.includes("pollinations.ai") ||
-    content?.includes("localhost:8000/images")
+    content?.includes("forgeai-em4m.onrender.com/images")
   const imageUrl = content?.match(/(https?:\/\/[^\s]+)/)?.[0] || content
 
   if (isImageUrl) {

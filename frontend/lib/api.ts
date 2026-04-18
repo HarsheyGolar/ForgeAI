@@ -1,6 +1,6 @@
 // import { getToken } from "./auth"
 
-// const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"
+// const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://forgeai-em4m.onrender.com"
 
 // async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
 //     const token = getToken()
@@ -95,12 +95,12 @@
 
 import { getToken } from "./auth"
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://forgeai-em4m.onrender.com"
 
 async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
     const token = getToken()
     const headers: Record<string, string> = {}
-    
+
     // Existing headers copy karo
     if (options.headers) {
         const existingHeaders = new Headers(options.headers)
@@ -141,19 +141,19 @@ export const api = {
     },
 
     async login(data: any) {
-    // ✅ JSON — kyunki tera FastAPI Pydantic model use karta hai
-    const res = await fetch(`${BASE_URL}/auth/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            email: data.email,
-            password: data.password
-        }),
-    })
-    return res.json()
-},
+        // ✅ JSON — kyunki tera FastAPI Pydantic model use karta hai
+        const res = await fetch(`${BASE_URL}/auth/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: data.email,
+                password: data.password
+            }),
+        })
+        return res.json()
+    },
 
     async getGoogleAuthUrl() {
         const res = await fetch(`${BASE_URL}/auth/google`)

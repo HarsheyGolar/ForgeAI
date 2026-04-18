@@ -18,7 +18,7 @@
 // //                 document.cookie = `forgeai_token=${accessToken}; path=/; max-age=86400; SameSite=Lax`
 
 // //                 // Save user info by calling GET /auth/me with token
-// //                 fetch("http://localhost:8000/auth/me", {
+// //                 fetch("https://forgeai-em4m.onrender.com/auth/me", {
 // //                     headers: {
 // //                         Authorization: `Bearer ${accessToken}`
 // //                     }
@@ -136,7 +136,7 @@ export default function AuthCallbackPage() {
 
                     // User info save karo
                     try {
-                        const res = await fetch("http://localhost:8000/auth/me", {
+                        const res = await fetch("https://forgeai-em4m.onrender.com/auth/me", {
                             headers: {
                                 Authorization: `Bearer ${access_token}`
                             }
