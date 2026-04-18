@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 supabase_url = os.getenv("NEXT_PUBLIC_SUPABASE_URL")
-supabase_api_key = os.getenv("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY")
+supabase_api_key = os.getenv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
 
 supabase : Client = create_client(supabase_url,supabase_api_key)
 
