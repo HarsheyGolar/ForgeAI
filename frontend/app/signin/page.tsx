@@ -222,11 +222,20 @@ export default function SignInPage() {
     e.preventDefault()
     setIsLoading(true)
 
-    try {
-      const res = await api.login({
-        email: formData.email,
-        password: formData.password,
-      })
+    // try {
+    //   const res = await api.login({
+    //     email: formData.email,
+    //     password: formData.password,
+    //   })
+        try {
+        // Pehle backend wake up karo
+        await fetch("https://forgeai-em4m.onrender.com/docs")
+            .catch(() => {}) // Error ignore karo
+        
+        const res = await api.login({
+            email: formData.email,
+            password: formData.password,
+        })
 
       if (res.access_token) {
         // FIXED: Use centralized auth logic
